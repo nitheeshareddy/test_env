@@ -1,5 +1,5 @@
 #!/bin/bash
 
 touch .env
-echo SECRET=${{ secrets.SECRET }} >> .env
+SECRET=${{secrets.SECRET}}
 cat .env
