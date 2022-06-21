@@ -1,0 +1,12 @@
+name: Tests
+on: push
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    env:
+      super_secret: ${{ secrets.ENV }}
+    steps:
+      - if: ${{ env.super_secret == 'Sandbox' }}
+        run: echo 'This step will only run if the secret has a value set.'
+      - if: ${{ env.super_secret == '' }}
+        run: echo 'This step will only run if the secret does not have a value set.'
