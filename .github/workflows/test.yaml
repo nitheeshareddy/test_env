@@ -12,6 +12,8 @@ jobs:
     steps:
       - if: ${{ env.super_secret == 'Sandbox' }}
         run: echo 'This step will only run if the secret is associated with respective environment'
+      - name: Checkout Code
+        uses: actions/checkout@v2
       - name: Run Inline script
         run: |
           mkdir test
