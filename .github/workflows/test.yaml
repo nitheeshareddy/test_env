@@ -14,12 +14,7 @@ jobs:
         run: echo 'This step will only run if the secret is associated with respective environment'
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: Run Inline script
-        run: |
-          mkdir test
-          ls -l
-        shell: bash
-      - name: Run a script file from repo
+      - name: Create .env File
         run: chmod +x ./run.sh && sh ./run.sh
         shell: bash
   Live:
@@ -30,4 +25,9 @@ jobs:
     steps:
       - if: ${{ env.super_secret == 'Live' }}
         run: echo 'This step will only run if the secret is associated with respective environment'
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Create .env File
+        run: chmod +x ./run.sh && sh ./run.sh
+        shell: bash
     
