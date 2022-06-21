@@ -1,3 +1,3 @@
-mkdir filefromrunsh
-ls
-echo "file created"
+touch .env
+echo SECRET=${{ secrets.SECRET }} >> .env
+cat .env
