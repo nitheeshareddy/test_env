@@ -4,13 +4,19 @@ on:
   workflow_dispatch:
   
 jobs:
-  sandbox:
+  Sandbox:
     runs-on: ubuntu-latest
     env:
       super_secret: ${{ secrets.ENV }}
     environment: Sandbox
     steps:
       - if: ${{ env.super_secret == 'Sandbox' }}
-        run: echo 'This step will only run if the secret has a value set.'
-      - if: ${{ env.super_secret == '' }}
-        run: echo 'This step will only run if the secret does not have a value set.'
+        run: echo 'This step will only run if the secret has Sandbox as Value.'
+  Live:
+    runs-on: ubuntu-latest
+    env:
+      super_secret: ${{ secrets.ENV }}
+    environment: Live
+    steps:
+      - if: ${{ env.super_secret == 'Live' }}
+        run: echo 'This step will only run if the secret has Live as value.'
