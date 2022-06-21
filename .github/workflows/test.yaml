@@ -1,10 +1,14 @@
 name: Tests
-on: push
+
+on:
+  workflow_dispatch:
+  
 jobs:
   sandbox:
     runs-on: ubuntu-latest
     env:
       super_secret: ${{ secrets.ENV }}
+    environment: Sandbox
     steps:
       - if: ${{ env.super_secret == 'Sandbox' }}
         run: echo 'This step will only run if the secret has a value set.'
