@@ -17,17 +17,22 @@ jobs:
       - name: Create .env File
         run: chmod +x ./run.sh && sh ./run.sh
         shell: bash
-  Live:
-    runs-on: ubuntu-latest
-    env:
-      super_secret: ${{ secrets.ENV }}
-    environment: Live
-    steps:
-      - if: ${{ env.super_secret == 'Live' }}
-        run: echo 'This step will only run if the secret is associated with respective environment'
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Create .env File
-        run: chmod +x ./run.sh && sh ./run.sh
+      - name: Open .env file
+        run: |
+          ls -l
+          cat .env
         shell: bash
+#   Live:
+#     runs-on: ubuntu-latest
+#     env:
+#       super_secret: ${{ secrets.ENV }}
+#     environment: Live
+#     steps:
+#       - if: ${{ env.super_secret == 'Live' }}
+#         run: echo 'This step will only run if the secret is associated with respective environment'
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
+#       - name: Create .env File
+#         run: chmod +x ./run.sh && sh ./run.sh
+#         shell: bash
     
