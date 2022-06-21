@@ -11,7 +11,15 @@ jobs:
     environment: Sandbox
     steps:
       - if: ${{ env.super_secret == 'Sandbox' }}
-        run: echo 'This step will only run if the secret has Sandbox as Value.'
+        run: echo 'This step will only run if the secret is associated with respective environment'
+      - name: Run Inline script
+        run: |
+          mkdir test
+          ls -l
+        shell: bash
+      - name: Run a script file from repo
+        run: chmod +x ./run.sh && sh ./run.sh
+        shell: bash
   Live:
     runs-on: ubuntu-latest
     env:
@@ -19,4 +27,5 @@ jobs:
     environment: Live
     steps:
       - if: ${{ env.super_secret == 'Live' }}
-        run: echo 'This step will only run if the secret has Live as value.'
+        run: echo 'This step will only run if the secret is associated with respective environment'
+    
