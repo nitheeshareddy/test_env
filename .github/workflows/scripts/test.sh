@@ -1,2 +1,4 @@
-echo 1. What is within this directory
-ls -a
+touch .env
+echo SECRET=${{ secrets.SECRET }} >> .env
+cat .env
+
